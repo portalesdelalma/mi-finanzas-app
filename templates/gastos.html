@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Registro de Gastos</h2>
+
+<form method="post" class="mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="date" class="form-control" name="fecha" required>
+        </div>
+        <div class="col-md-3">
+            <select class="form-control" name="categoria">
+                <option>Arriendo</option>
+                <option>Comida</option>
+                <option>Teléfono</option>
+                <option>Insumos</option>
+                <option>Equipos</option>
+                <option>Transporte</option>
+                <option>Deudas</option>
+                <option>Otros</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" name="monto" placeholder="Monto" required>
+        </div>
+        <div class="col-md-3">
+            <select class="form-control" name="es_personal">
+                <option value="1">Personal</option>
+                <option value="0">Negocio</option>
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-danger mt-3">Guardar gasto</button>
+</form>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Fecha</th>
+        <th>Categoría</th>
+        <th>Monto</th>
+        <th>Tipo</th>
+    </tr>
+    {% for g in gastos %}
+    <tr>
+        <td>{{ g["fecha"] }}</td>
+        <td>{{ g["categoria"] }}</td>
+        <td>${{ g["monto"] }}</td>
+        <td>
+            {% if g["es_personal"] == 1 %}
+                Personal
+            {% else %}
+                Negocio
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

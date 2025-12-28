@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Cotizaciones</h2>
+
+<a href="/cotizaciones/nueva" class="btn btn-success mb-3">
+    Nueva cotización
+</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Cliente</th>
+        <th>Descripción</th>
+        <th>Monto</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for c in cotizaciones %}
+    <tr>
+        <td>{{ c["cliente"] }}</td>
+        <td>{{ c["descripcion"] }}</td>
+        <td>${{ c["monto"] }}</td>
+        <td>{{ c["estado"] }}</td>
+        <td>
+            {% if c["estado"] == 'Pendiente' %}
+                <a href="/cotizaciones/estado/{{ c['id'] }}/Aprobada"
+                   class="btn btn-sm btn-primary">Aprobar</a>
+
+                <a href="/cotizaciones/estado/{{ c['id'] }}/Rechazada"
+                   class="btn btn-sm btn-danger">Rechazar</a>
+
+            {% elif c["estado"] == 'Aprobada' %}
+                <a href="/cotizaciones/convertir/{{ c['id'] }}"
+                   class="btn btn-sm btn-success">
+                   Convertir a ingreso
+                </a>
+            {% else %}
+                —
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

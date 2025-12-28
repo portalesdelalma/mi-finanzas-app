@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Dashboard – Resumen del Mes</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3 p-3">
+            <h5>Ingresos</h5>
+            <h4>${{ ingresos_mes }}</h4>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-danger mb-3 p-3">
+            <h5>Gastos</h5>
+            <h4>${{ gastos_mes }}</h4>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3 p-3">
+            <h5>Utilidad</h5>
+            <h4>${{ utilidad }}</h4>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-light mb-3 p-3">
+            <h6>Gastos personales</h6>
+            <p>${{ gastos_personales }}</p>
+            <h6>Gastos negocio</h6>
+            <p>${{ gastos_negocio }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

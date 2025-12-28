@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Registro de Ingresos</h2>
+
+<form method="post" class="mb-4">
+    <div class="row">
+        <div class="col-md-2">
+            <input type="date" class="form-control" name="fecha" required>
+        </div>
+        <div class="col-md-2">
+            <input class="form-control" name="cliente" placeholder="Cliente">
+        </div>
+        <div class="col-md-2">
+            <select class="form-control" name="tipo">
+                <option>Zapatos</option>
+                <option>Agendas</option>
+                <option>Libros</option>
+                <option>Colegio</option>
+                <option>Otros</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input class="form-control" name="monto" placeholder="Monto total" required>
+        </div>
+        <div class="col-md-2">
+            <input class="form-control" name="comision" placeholder="Comisión" value="0">
+        </div>
+        <div class="col-md-2">
+            <input class="form-control" value="Auto" disabled>
+        </div>
+    </div>
+    <button class="btn btn-success mt-3">Guardar ingreso</button>
+</form>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Tipo</th>
+        <th>Monto</th>
+        <th>Comisión</th>
+        <th>Ganancia</th>
+    </tr>
+    {% for i in ingresos %}
+    <tr>
+        <td>{{ i["fecha"] }}</td>
+        <td>{{ i["cliente"] }}</td>
+        <td>{{ i["tipo"] }}</td>
+        <td>${{ i["monto"] }}</td>
+        <td>${{ i["comision"] }}</td>
+        <td><b>${{ i["ganancia"] }}</b></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

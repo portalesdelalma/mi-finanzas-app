@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Nueva Cotización</h2>
+
+<form method="post">
+    <input type="text" name="cliente" class="form-control mb-2" placeholder="Cliente" required>
+
+    <textarea name="descripcion" class="form-control mb-2" placeholder="Descripción"></textarea>
+
+    <input type="number" name="monto" class="form-control mb-2" placeholder="Monto" required>
+
+    <button class="btn btn-success">Guardar</button>
+</form>
+
+{% endblock %}

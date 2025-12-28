@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Clientes</h2>
+
+<form method="post" class="mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <input class="form-control" name="nombre" placeholder="Nombre" required>
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" name="telefono" placeholder="Teléfono">
+        </div>
+        <div class="col-md-3">
+            <select class="form-control" name="tipo">
+                <option>Autor</option>
+                <option>Colegio</option>
+                <option>Particular</option>
+                <option>Recurrente</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" name="notas" placeholder="Notas">
+        </div>
+    </div>
+    <button class="btn btn-primary mt-3">Guardar cliente</button>
+</form>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Tipo</th>
+        <th>Notas</th>
+    </tr>
+    {% for c in clientes %}
+    <tr>
+        <td>{{ c["nombre"] }}</td>
+        <td>{{ c["telefono"] }}</td>
+        <td>{{ c["tipo"] }}</td>
+        <td>{{ c["notas"] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
